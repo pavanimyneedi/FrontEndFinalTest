@@ -12,21 +12,30 @@
 	<script language="javascript">
 		//Your code goes here
     function generateTable() {
-        var rows = parseInt(document.getElementById("t1").value);
+        var row = parseInt(document.getElementById("t1").value);
         var cols = parseInt(document.getElementById("t2").value);
 
-        var table = "<table border='1'>";
-        for (var i = 0; i < rows; i++) {
-            table += "<tr>";
+		if(row <= 0 || cols <= 0 || isNaN(cols) || isNaN(row)){
+			alert("The value must be greater than 0");
+			return;
+		}
+        var createTable = "<table border='1'>";
+
+        for (var i = 0; i < row; i++) {
+            createTable += "<tr>";
             for (var j = 0; j < cols; j++) {
-                table += "<td>Row " + (i + 1) + ", Column " + (j + 1) + "</td>";
+                createTable += "<td> " + (i + 1) + ", " + (j + 1) + "</td>";
             }
-            table += "</tr>";
+            createTable += "</tr>";
         }
-        table += "</table>";
-        document.body.innerHTML = "<font size='8' color='green'>Final test lab</font><br><br>" + table +
+        createTable += "</table>";
+		
+		
+
+        document.body.innerHTML = "<font size='8' color='green'>Final test lab</font><br><br>" + createTable +
             "<br><button id='b2' onclick='addColumn()'>Add Column</button> " +
             "<button id='b3' onclick='addRow()'>Add Row</button>";
+			
 		
     }
 
@@ -36,7 +45,9 @@
 
         for (var i = 0; i < rowCount; i++) {
             var cell = table.rows[i].insertCell(-1);
-            cell.innerHTML = "New Column";
+            //cell.innerHTML = "New Column";
+			var currentColumnCount = table.rows[i].cells.length;
+			cell.innerHTML = "Row " + (i + 1) + ", Column " + currentColumnCount;
         }
     }
 
@@ -47,7 +58,9 @@
 
         for (var i = 0; i < cellCount; i++) {
             var cell = newRow.insertCell(-1);
-            cell.innerHTML = "New Row";
+			var currentRowCount = table.rows.length;
+            //cell.innerHTML = "New Row";
+			cell.innerHTML = "Row " + currentRowCount + ", Column " + (i + 1);
         }
     }
 	</script>
