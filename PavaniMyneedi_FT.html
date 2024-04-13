@@ -3,11 +3,11 @@
 	Number of rows: <input type="text" id="t1" /><br><br>
 	Number of cols: <input type="text" id="t2" /><br><br>
 	
-	<button id="b1" onclick="generateTable()">Generate Table</button><br><br>
+	<button style="background-color: rgb(246, 200, 140);" id="b1" onclick="generateTable()">Generate Table</button><br><br>
 	
-	<button id="b2" onclick="addColumn()">Add Column</button>
+	<button style="background-color: rgb(129, 125, 125);" id="b2" onclick="addColumn()">Add Column</button>
 	
-	<button id="b3" onclick="addRow()">Add Row</button>
+	<button style="background-color: rgb(129, 125, 125);" id="b3" onclick="addRow()">Add Row</button>
 		
 	<script language="javascript">
 		//Your code goes here
@@ -47,7 +47,7 @@
             var cell = table.rows[i].insertCell(-1);
             //cell.innerHTML = "New Column";
 			var currentColumnCount = table.rows[i].cells.length;
-			cell.innerHTML = "Row " + (i + 1) + ", Column " + currentColumnCount;
+			cell.innerHTML = "" + (i + 1) + ", " + currentColumnCount;
         }
     }
 
@@ -60,7 +60,7 @@
             var cell = newRow.insertCell(-1);
 			var currentRowCount = table.rows.length;
             //cell.innerHTML = "New Row";
-			cell.innerHTML = "Row " + currentRowCount + ", Column " + (i + 1);
+			cell.innerHTML = "" + currentRowCount + ", " + (i + 1);
         }
     }
 	</script>
